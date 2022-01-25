@@ -7,6 +7,7 @@ const articlesRouter = require("./routes/articles")
 
 connect()
 
+app.use(express.json())
 
 app.use((req,res,next)=>{
     console.log("Request URL:", req.originalUrl, " - ", new Date())
