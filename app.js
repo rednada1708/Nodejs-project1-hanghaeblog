@@ -1,10 +1,11 @@
 const express = require("express")
+const connect = require("./schemas/index")
 const app = express()
 const port = 3000
 const articlesRouter = require("./routes/articles")
 
 
-
+connect()
 
 
 app.use((req,res,next)=>{
