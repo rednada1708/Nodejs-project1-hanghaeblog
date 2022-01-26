@@ -51,6 +51,7 @@ router.post("/articles",async(req,res)=>{
 
 
 router.put("/articles/:articleId", async(req,res)=>{
+    console.log('수정 요청 받았습니다.')
     const {articleId} = req.params
     const {title,content,author,password} = req.body
     const [oldArticle] = await Articles.find({articleId:Number(articleId)})
