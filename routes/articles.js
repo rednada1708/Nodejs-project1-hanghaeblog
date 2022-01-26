@@ -33,8 +33,7 @@ router.post("/articles",async(req,res)=>{
         articleId = Math.max(...ids) + 1
     } 
     const createdArticle = await Articles.create({articleId,title,author,password,content,date})
-    console.log(articleId)
-    res.json({articles:createdArticle})
+    res.json({result:"작성완료"})
 })
 
 
