@@ -15,8 +15,12 @@ router.get("/articles", async(req,res)=>{
     res.send({articles})
 })
 
-
-
+router.get("/articles/:articleId", async(req,res)=>{
+    const {articleId} = req.params
+    console.log(articleId)
+    const articles = await Articles.findOne({articleId:Number(articleId)})
+    res.send({articles})
+})
 
 router.post("/articles",async(req,res)=>{
     const {title, author, password, content} = req.body
@@ -32,6 +36,33 @@ router.post("/articles",async(req,res)=>{
     console.log(articleId)
     res.json({articles:createdArticle})
 })
+
+
+router.put("/articles/:articleId", async(req,res)=>{
+    const {articleId} = req.params
+    const {title,content,author,password} = req.body
+    const [oldArticle] = await Articles.find({articleId:Number(articleId)})
+    if (password !== oldArticle.password ){
+        return res.status(400).json({succses:false, errorMessage:"비밀번호가 틀렸습니다."})
+    }
+    const date = new Date()
+    await Articles.updateOne({articleId:Number(articleId)},{$set:{title,content,date}})
+    res.send({result:'수정완료'})
+})
+
+router.delete("/articles/:articleId", async(req,res)=>{
+    const {articleId} = req.params
+    const {password} = req.body
+    const [oldArticle] = await Articles.find({articleId:Number(articleId)})
+    if (password !== oldArticle.password ){
+        return res.status(400).json({succses:false, errorMessage:"비밀번호가 틀렸습니다."})
+    }
+    await Articles.deleteOne({articleId})
+    res.send({result:'삭제완료'})
+})
+
+
+
 
 
 
