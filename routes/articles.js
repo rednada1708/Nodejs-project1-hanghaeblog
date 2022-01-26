@@ -59,7 +59,7 @@ router.put("/articles/:articleId", async(req,res)=>{
     }
     const date = new Date()
     await Articles.updateOne({articleId:Number(articleId)},{$set:{title,content,date}})
-    res.send({result:'수정완료'})
+    res.json({result:'수정완료'})
 })
 
 router.delete("/articles/:articleId", async(req,res)=>{
@@ -70,7 +70,7 @@ router.delete("/articles/:articleId", async(req,res)=>{
         return res.status(400).json({succses:false, errorMessage:"비밀번호가 틀렸습니다."})
     }
     await Articles.deleteOne({articleId})
-    res.send({result:'삭제완료'})
+    res.json({result:'삭제완료'})
 })
 
 

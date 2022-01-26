@@ -14,6 +14,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/public/css/master.css" />
   <script>
+    let articleId = <%= articles.articleId%>
+    console.log(articleId)
     $(document).ready(function() {
         $('#title').val('<%= articles.title%>');
         $('#author').val('<%= articles.author%>');
@@ -22,6 +24,34 @@
     function to_main() {
       window.location.href = "/api/articles"
     }
+
+    function reform() {
+      let title = $('#title').val()
+      let author  = $('#author').val()
+      let password = $('#password').val()
+      let content = $('#content').val()
+      if( !(title.length && author.length && password.length && content.length) ){
+        return alert('빈값이 있습니다.')
+      }
+      console.log(title,content,author,password)
+      $.ajax({
+        type: "PUT",
+        url: `/api/articles/${articleId}`,
+        data:{
+          "title": title,
+          "author": author,
+          "content": content
+        },
+        success: function (response) {
+          alert(response['result'])
+        },
+      });
+    }
+
+
+
+
+
   
   </script>
 
@@ -67,7 +97,7 @@
 
     <div class="field is-grouped">
       <div class="control">
-        <button class="button is-link">수정완료</button>
+        <button class="button is-link" onclick="reform()">수정완료</button>
       </div>
       <div class="control">
         <button class="button is-link is-light">삭제</button>
