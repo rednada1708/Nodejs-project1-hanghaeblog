@@ -27,7 +27,7 @@ app.use("/api",articlesRouter)
 
 
 app.get("/",(req,res)=>{
-    res.render('hello World')
+    res.redirect("/api/articles")
 })
 
 

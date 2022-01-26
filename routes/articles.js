@@ -12,7 +12,7 @@ router.get("/articles", async(req,res)=>{
     const existArticles = await Articles.find()
     const articles = existArticles.sort((a,b)=>b.date-a.date)
     console.log(articles)
-    res.send({articles})
+    res.render('articles':{articles})
 })
 
 router.get("/articles/:articleId", async(req,res)=>{
