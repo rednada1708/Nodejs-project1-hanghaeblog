@@ -12,63 +12,65 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/master.css" />
-
-
-
+    <link rel="stylesheet" href="/public/css/master.css" />
+    <script>
+        function to_reform(){
+            window.location.href = "/reform"
+        }
+        function to_main(){
+            window.location.href = "/api/articles"
+        }
+    </script>
 </head>
 
 <body>
-    <section class="hero is-white">
+    <section onclick="to_main()" class="hero is-white">
         <div class="hero-body has-text-centered" style="padding-bottom:1rem;margin:auto;">
             <h1 class="title is-sparta">항해블로그</h1>
             <h3 class="subtitle is-sparta">나만의 항해일지</h3>
         </div>
     </section>
 
-    <section class = "post-write"> 
-          <div class="field">
+    <section class="post-write">
+        <div class="field">
             <label class="label">제목</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="">
+            <div class="box">
+                <%= articles.title %>
             </div>
-          </div>
-          <div class="field">
+        </div>
+        <div class="field">
             <label class="label">작성자</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="">
+            <div class="box">
+                <%= articles.author %>
             </div>
-          </div>
-          <div class="field">
-            <label class="label">비밀번호</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="">
+        </div>
+        <div class="field">
+            <label class="label">작성날짜</label>
+            <div class="box">
+                <%= new Date(articles.date).toString().slice(0,24) %>
             </div>
-          </div>             
+        </div>
 
-          <div class="field">
+        <div class="field">
             <label class="label">내용</label>
-            <div class="control">
-              <textarea class="textarea" placeholder=""></textarea>
+            <div class="box">
+                <%= articles.content %>
             </div>
-          </div>
-          
+        </div>
 
-          
-          <div class="field is-grouped">
+
+
+        <div class="field is-grouped">
             <div class="control">
-              <button class="button is-link">수정완료</button>
+                <button class="button is-link" onclick="window.location.href='/api/articles/<%= articles.articleId %>/reform'">수정하기</button>
             </div>
-            <div class="control">
-              <button class="button is-link is-light">삭제</button>
-            </div>
-          </div>
+        </div>
 
 
 
     </section>
-      
-     
+
+
 
 
 </body>
