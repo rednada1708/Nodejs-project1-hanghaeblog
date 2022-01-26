@@ -7,6 +7,10 @@ const articlesRouter = require("./routes/articles")
 
 connect()
 
+app.set('view engine', 'ejs')
+app.use(express.static(__dirname+'/public'))
+
+
 app.use(express.json())
 
 app.use((req,res,next)=>{
@@ -23,7 +27,7 @@ app.use("/api",articlesRouter)
 
 
 app.get("/",(req,res)=>{
-    res.send('hello World')
+    res.render('hello World')
 })
 
 
