@@ -12,10 +12,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/master.css" />
-
-
-
+    <link rel="stylesheet" href="/public/css/master.css" />
+    <script>
+        function to_reform(){
+            window.location.href = "/reform"
+        }
+    </script>
 </head>
 
 <body>
@@ -26,49 +28,46 @@
         </div>
     </section>
 
-    <section class = "post-write"> 
-          <div class="field">
+    <section class="post-write">
+        <div class="field">
             <label class="label">제목</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="">
+            <div class="box">
+                오늘은 과제제출 전날
             </div>
-          </div>
-          <div class="field">
+        </div>
+        <div class="field">
             <label class="label">작성자</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="">
+            <div class="box">
+                ㄱ김지섭
             </div>
-          </div>
-          <div class="field">
-            <label class="label">비밀번호</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="">
+        </div>
+        <div class="field">
+            <label class="label">작성날짜</label>
+            <div class="box">
+                2020.01.30.
             </div>
-          </div>             
+        </div>
 
-          <div class="field">
+        <div class="field">
             <label class="label">내용</label>
-            <div class="control">
-              <textarea class="textarea" placeholder=""></textarea>
+            <div class="box">
+                노드js너무 어렵다 .ㅜㅜㅜ.
             </div>
-          </div>
-          
+        </div>
 
-          
-          <div class="field is-grouped">
+
+
+        <div class="field is-grouped">
             <div class="control">
-              <button class="button is-link">수정완료</button>
+                <button class="button is-link" onclick="to_reform()">수정하기</button>
             </div>
-            <div class="control">
-              <button class="button is-link is-light">삭제</button>
-            </div>
-          </div>
+        </div>
 
 
 
     </section>
-      
-     
+
+
 
 
 </body>

@@ -23,6 +23,9 @@ router.get("/articles/:articleId", async(req,res)=>{
 
 router.post("/articles",async(req,res)=>{
     const {title, author, password, content} = req.body
+    if ( !(title && author && password && content)){
+        return res.json({success:false,errorMessage:"값을 모두 입력하지 않았습니다."})
+    }
     const date = new Date()
     const articles = await Articles.find()
     console.log(articles)
@@ -32,7 +35,7 @@ router.post("/articles",async(req,res)=>{
         articleId = Math.max(...ids) + 1
     } 
     const createdArticle = await Articles.create({articleId,title,author,password,content,date})
-    res.json({result:"작성완료"})
+    res.json({ result : "작성완료" })
 })
 
 
