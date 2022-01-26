@@ -11,15 +11,26 @@ router.get("/articles", async(req,res)=>{
     const existArticles = await Articles.find()
     const articles = existArticles.sort((a,b)=>b.date-a.date)
     console.log(articles)
-    res.json({articles})
+    res.render("main",{articles:articles})
 })
 
 router.get("/articles/:articleId", async(req,res)=>{
     const {articleId} = req.params
     console.log(articleId)
     const articles = await Articles.findOne({articleId:Number(articleId)})
-    res.send({articles})
+    res.render("detail",{articles})
 })
+
+router.get("/articles/:articleId/reform", async(req,res)=>{
+    const {articleId} = req.params
+    console.log(articleId)
+    const articles = await Articles.findOne({articleId:Number(articleId)})
+    res.render("reform",{articles})
+})
+
+
+
+
 
 router.post("/articles",async(req,res)=>{
     const {title, author, password, content} = req.body

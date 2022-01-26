@@ -14,9 +14,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Jua&family=Single+Day&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/public/css/master.css" />
   <script>
+    $(document).ready(function() {
+        $('#title').val('<%= articles.title%>');
+        $('#author').val('<%= articles.author%>');
+        $('#content').val('<%= articles.content%>');
+    });
     function to_main() {
-      window.location.href = "/main"
+      window.location.href = "/api/articles"
     }
+  
   </script>
 
 
@@ -34,26 +40,26 @@
     <div class="field">
       <label class="label">제목</label>
       <div class="control">
-        <input class="input" type="text" placeholder="">
+        <input class="input" type="text" placeholder="" id ="title">
       </div>
     </div>
     <div class="field">
       <label class="label">작성자</label>
       <div class="control">
-        <input class="input" type="text" placeholder="">
+        <input class="input" type="text" placeholder="" id ="author">
       </div>
     </div>
     <div class="field">
       <label class="label">비밀번호</label>
       <div class="control">
-        <input class="input" type="text" placeholder="">
+        <input class="input" type="text" placeholder="" id ="password">
       </div>
     </div>
 
     <div class="field">
       <label class="label">내용</label>
       <div class="control">
-        <textarea class="textarea" placeholder=""></textarea>
+        <textarea class="textarea" placeholder="" id ="content"></textarea>
       </div>
     </div>
 

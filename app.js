@@ -29,10 +29,6 @@ app.get("/",(req,res)=>{
     res.render("index",{})
 })
 
-app.get("/main",(req,res)=>{
-    res.render("main",{})
-})
-
 app.get("/reform",(req,res)=>{
     res.render("reform",{})
 })
@@ -42,9 +38,7 @@ app.get("/write",(req,res)=>{
 })
 
 
-app.get("/detail",(req,res)=>{
-    res.render("detail",{})
-})
+
 
 
 

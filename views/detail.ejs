@@ -18,7 +18,7 @@
             window.location.href = "/reform"
         }
         function to_main(){
-            window.location.href = "/main"
+            window.location.href = "/api/articles"
         }
     </script>
 </head>
@@ -35,26 +35,26 @@
         <div class="field">
             <label class="label">제목</label>
             <div class="box">
-                오늘은 과제제출 전날
+                <%= articles.title %>
             </div>
         </div>
         <div class="field">
             <label class="label">작성자</label>
             <div class="box">
-                ㄱ김지섭
+                <%= articles.author %>
             </div>
         </div>
         <div class="field">
             <label class="label">작성날짜</label>
             <div class="box">
-                2020.01.30.
+                <%= new Date(articles.date).toString().slice(0,24) %>
             </div>
         </div>
 
         <div class="field">
             <label class="label">내용</label>
             <div class="box">
-                노드js너무 어렵다 .ㅜㅜㅜ.
+                <%= articles.content %>
             </div>
         </div>
 
@@ -62,7 +62,7 @@
 
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link" onclick="to_reform()">수정하기</button>
+                <button class="button is-link" onclick="window.location.href='/api/articles/<%= articles.articleId %>/reform'">수정하기</button>
             </div>
         </div>
 

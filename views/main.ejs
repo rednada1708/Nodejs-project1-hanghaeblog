@@ -31,15 +31,22 @@
       window.location.href = "/write"
     }
     function to_main(){
-      window.location.href = "/main"
+      window.location.href = "/api/articles/"
+    }
+    function to_detail(number){
+      window.location.href = `/api/articles/${number}`
     }
 
   </script>
-
+  <style>
+    .card-content{
+      margin-bottom: 20px;
+      border: 5px solid rgb(120, 150, 240) ;
+    }
+  </style>
 </head>
 
 <body>
-  <%= reponse.articles[0].title %>
   <section onclick="to_main()" class="hero is-white">
     <div class="hero-body has-text-centered" style="padding-bottom:1rem;margin:auto;">
       <h1 class="title is-sparta">항해블로그</h1>
@@ -54,21 +61,22 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-content">
-        <div class="media">
-          <div class="media-content">
-            <p class="title is-4">Title</p>
-            <p class="subtitle is-5">by 작성자</p>
+      <% for(let article of articles) { %>
+        <div class="card-content" onclick="to_detail( <%= article.articleId %> )">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4"><%= article.title %></p>
+              <p class="subtitle is-5">by <%= article.author %></p>
+            </div>
+          </div>
+          <div class="content">
+            <%= article.content %>
+            <br>
+            <br>
+            <time datetime="2016-1-1"><%= new Date(article.date).toString().slice(0,24) %></time>
           </div>
         </div>
-        <div class="content">
-          Lorem ipsum dolor sit amet, consectetur addddddddddddddddddddddddddddddddddddddddddddddipiscing elit.
-          Phasellus nec iaculis mauris.
-          <br>
-          <br>
-          <time datetime="2016-1-1">date</time>
-        </div>
-      </div>
+      <% } %>
     </div>
 
   </section>
