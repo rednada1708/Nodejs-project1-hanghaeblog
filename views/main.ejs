@@ -30,13 +30,17 @@
     function to_write(){
       window.location.href = "/write"
     }
+    function to_main(){
+      window.location.href = "/main"
+    }
 
   </script>
 
 </head>
 
 <body>
-  <section class="hero is-white">
+  <%= reponse.articles[0].title %>
+  <section onclick="to_main()" class="hero is-white">
     <div class="hero-body has-text-centered" style="padding-bottom:1rem;margin:auto;">
       <h1 class="title is-sparta">항해블로그</h1>
       <h3 class="subtitle is-sparta">나만의 항해일지</h3>
