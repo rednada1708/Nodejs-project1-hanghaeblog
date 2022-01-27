@@ -17,9 +17,9 @@
     let articleId = <%= articles.articleId%>
     console.log(articleId)
     $(document).ready(function() {
-        $('#title').val('<%= articles.title%>');
-        $('#author').val('<%= articles.author%>');
-        $('#content').val('<%= articles.content%>');
+        $('#title').val(`<%= articles.title%>`);
+        $('#author').val(`<%= articles.author%>`);
+        $('#content').val(`<%= articles.content%>`);
     });
     function to_main() {
       window.location.href = "/api/articles"
